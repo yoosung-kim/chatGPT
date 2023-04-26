@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
+    <title>민족의 리뷰</title>
+    <style>
+        .card-header h3 {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .col-sm-6 {
+            padding-top: 15px;
+        }
+        #review-reply {
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-6">
+                <div class="card border-dark mb-3">
+                    <div class="card-header text-center">
+                        <h3>민족의 리뷰</h3>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/review}" method="post" th:object="${replyRequestDto}">
+                            <div class="form-group text-center">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="replyType" id="option1" th:field="*{replyType}" value="NORMAL">
+                                    <label class="form-check-label" for="option1">일반</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="replyType" id="option2" th:field="*{replyType}" value="IMOTICON" >
+                                    <label class="form-check-label" for="option2">이모티콘</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="replyType" id="option3" th:field="*{replyType}" value="POLITELY" >
+                                    <label class="form-check-label" for="option3">깍듯하게</label>
+                                </div>
+                            </div>
+                            <div class="form-group text-center">
+                                <textarea class="form-control" id="review" name="review" rows="20" placeholder="리뷰를 입력해주세요." th:field="*{review}"></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">리뷰 답변 생성</button>
+                            </div>
+                        </form>
+                        <div id="review-reply" class="form-group text-center">
+                            <textarea class="form-control" id="reviewReply" name="reivewReply" rows="20" placeholder="리뷰 응답이 출력됩니다." th:text="${reviewReply}"></textarea>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

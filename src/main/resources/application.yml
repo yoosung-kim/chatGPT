@@ -1,0 +1,4 @@
+apis:
+  chatgpt:
+    domain: 'https://api.openai.com'
+    apiKey: ${CHAT_GPT_API_KEY}
